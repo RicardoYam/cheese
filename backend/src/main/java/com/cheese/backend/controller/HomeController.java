@@ -43,7 +43,7 @@ public class HomeController {
             // response "healthy: true"
             Map<String, Boolean> response = new HashMap<>();
             response.put("healthy", true);
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(response); 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
