@@ -169,3 +169,9 @@ Because of the time limit, I will stop my implementation here. However, this pro
 Docker deployment
 
 ![Docker deployment](./doc/docker-compose.png)
+
+
+
+## License
+
+[MIT License](LICENSE)
