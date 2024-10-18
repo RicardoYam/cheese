@@ -43,7 +43,7 @@ public class HomeController {
             // response "healthy: true"
             Map<String, Boolean> response = new HashMap<>();
             response.put("healthy", true);
-            return ResponseEntity.ok(response); 
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -62,8 +62,8 @@ public class HomeController {
      * life-cycle). Because of the configuration process and limited time, I just leave S3 there :)
      *
      * TODO: Image data can be stored in a separate table and linked to the cheese table using a foreign key. This
-     * way, we can join the tables to get the list of images for each cheese. Because this is a quick demo, i will
-     * just store one image per cheese.
+     * way, we can join the tables to get the list of images for each cheese. Because this is a quick demo, just
+     * store one image per cheese here.
      *
      * @param cheese The Cheese object containing the details of the cheese to be added.
      *               Must include a valid name, price greater than zero, and a valid color.
@@ -126,7 +126,7 @@ public class HomeController {
     @GetMapping("/cheeses")
     public ResponseEntity<List<Cheese>> getCheeses() {
         List<Cheese> cheeses = homeService.getAllCheeses();
-        if (cheeses == null) {
+        if (cheeses == null || cheeses.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(cheeses);
@@ -145,7 +145,7 @@ public class HomeController {
      *         or a NO_CONTENT status if the cheese with the specified ID does not exist.
      */
     @GetMapping("/cheeses/{id}")
-    public ResponseEntity<?> updateCheese(@PathVariable("id") Long id) {
+    public ResponseEntity<?> getOneCheese(@PathVariable("id") Long id) {
         Optional<Cheese> cheese = homeService.getOneCheese(id);
         if (cheese.isEmpty()) {
             return ResponseEntity.noContent().build();
